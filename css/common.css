@@ -1,0 +1,339 @@
+@charset "utf-8";
+
+/* cssリセット */
+
+/*利用するタグによってこちらの内容は増やす*/
+
+html,
+body,
+h1,
+h2,
+h3,
+p,
+dl,
+dt,
+dd,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  /*デフォルトの文字色、font-familyを予め当てておく*/
+  color: #433430;
+  font-family: "source-han-sans-japanese", sans-serif;
+  font-feature-settings: "palt";
+  font-weight: 700;
+  font-style: normal;
+}
+
+a {
+  /*下線を消す*/
+  text-decoration: none;
+  /*色を消す*/
+  color: inherit;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: #433430;
+}
+
+ul {
+  /*左の「・」を消す*/
+  list-style: none;
+}
+
+/*全体*/
+body {
+  padding: 0;
+  margin: 0;
+  background: #f2f2f2;
+}
+
+/*ナビ*/
+.wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.logo img {
+  width: 120px;
+  padding-top: 65px;
+  padding-left: 7px;
+}
+.pc-nav {
+  position: fixed;
+  width: 135px;
+  height: 100vh;
+  background: #9ab28e;
+}
+.pc-nav ul {
+  list-style: none;
+  margin-top: 50px;
+}
+.pc-nav ul li {
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+}
+.pc-nav ul li + li {
+  padding-top: 50px;
+}
+.pc-nav > ul > li a:hover,
+.pc-nav > ul > li .accordion-trigger:hover {
+  color: #433430;
+}
+.accordion-trigger {
+  color: #fff;
+  font-family: "source-han-sans-japanese", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  background: none;
+  border: none;
+  position: relative;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.works-menu {
+  display: none;
+}
+.footer-copy {
+  padding-bottom: 10px;
+  margin-left: 135px;
+  text-align: center;
+}
+#pagetop {
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #9ab28e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.pagetop_arrow {
+  height: 10px;
+  width: 10px;
+  border-top: 3px solid #fff;
+  border-right: 3px solid #fff;
+  transform: translateY(20%) rotate(-45deg);
+}
+
+/*上に上がる動き*/
+#pagetop.UpMove {
+  animation: UpAnime 0.5s forwards;
+}
+@keyframes UpAnime {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*下に下がる動き*/
+#pagetop.DownMove {
+  animation: DownAnime 0.5s forwards;
+}
+@keyframes DownAnime {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(100px);
+  }
+}
+
+/*スマホ版メニューは消す*/
+.sp-nav,
+.sp-btn,
+.sp-logo {
+  display: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .pc-nav {
+    display: none;
+  }
+  .sp-nav {
+    display: block;
+  }
+  /*========= ボタンのためのCSS ===============*/
+  /*ボタン外側*/
+  .sp-btn {
+    display: block;
+    position: fixed;
+    cursor: pointer;
+    top: 10px;
+    right: 10px;
+    width: 55px;
+    height: 55px;
+    border: 1px solid #fff;
+  }
+
+  /*ボタン内側*/
+  .sp-btn span {
+    display: inline-block;
+    transition: all 0.4s; /*アニメーションの設定*/
+    position: absolute;
+  }
+  .sp-btn span:nth-of-type(1),
+  .sp-btn span:nth-of-type(3) {
+    height: 2px;
+    background: #fff;
+    width: 62%;
+    left: 10px;
+  }
+  .sp-btn span:nth-of-type(1) {
+    top: 13px;
+  }
+  .sp-btn span:nth-of-type(2) {
+    top: 19px;
+    left: 11px;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .sp-btn span:nth-of-type(3) {
+    top: 36px;
+  }
+
+  /*activeクラスが付与されると線が回転して×になり、Menu表記をしている2つ目の要素が透過して消える*/
+  .sp-btn.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+  }
+  .sp-btn.active span:nth-of-type(2) {
+    opacity: 0;
+  }
+  .sp-btn.active span:nth-of-type(3) {
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+  }
+
+  /*========= ぼかしのためのCSS ===============*/
+  .mainblur {
+    filter: blur(8px);
+  }
+
+  /*========= ナビゲーションのためのCSS ===============*/
+  .sp-nav {
+    /*position:fixed;にし、z-indexの数値を小さくして最背面へ*/
+    position: absolute;
+    z-index: 1;
+    opacity: 0; /*はじめは透過0*/
+    /*ナビの位置と形状*/
+    top: 0;
+    width: 100%;
+    height: 100vh; /*ナビの高さ*/
+    background: rgba(0, 0, 0, 0.8); /*背景を少し透過させる*/
+    /*動き*/
+    transition: all 0.3s;
+  }
+
+  /*アクティブクラスがついたら透過なしにして最前面へ*/
+  .sp-nav.panelactive {
+    opacity: 1;
+    z-index: 999;
+  }
+
+  /*ナビゲーションの縦スクロール*/
+  .sp-nav.panelactive .sp-nav-list {
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100vh; /*表示する高さ*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /*ナビゲーション*/
+  .sp-nav ul {
+    display: none; /*はじめは非表示*/
+    /*ナビゲーション天地中央揃え*/
+    position: absolute;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .sp-nav.panelactive ul {
+    display: block;
+  }
+
+  /*リストのレイアウト設定*/
+  .sp-nav ul li {
+    padding: 20px 0;
+    list-style: none;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+  }
+  .sp-accordion-trigger {
+    color: #fff;
+    font-family: "source-han-sans-japanese", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    background: none;
+    border: none;
+    position: relative;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+  .sp-nav ul li.sp-works-menu {
+    display: none;
+  }
+
+  /*========= ボタンのためのCSS ===============*/
+  .sp-btn {
+    position: fixed;
+    z-index: 9999; /*ボタンを最前面に*/
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+  }
+  /*×に変化*/
+  .sp-btn span {
+    display: inline-block;
+    transition: all 0.4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+    width: 45%;
+  }
+  .sp-nav {
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+  }
+  .sp-logo {
+    display: block;
+    position: absolute;
+  }
+  .sp-logo img {
+    width: 80%;
+  }
+}

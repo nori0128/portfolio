@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATSUMOTO PORTFOLIO</title>
+    <meta name="description" content="ポートフォリオサイト">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="android-chrome-256x256.png">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav class="pc-nav">
+            <div class="logo"><a href="index.html"><img src="img/logo.webp" alt="ロゴ"></a></div>
+            <ul>
+                <li>
+                    <button class="accordion-trigger" aria-label="Worksメニュー"
+                        data-panel="accordion-panel_02">Works</button>
+                    <ul class="works-menu">
+                        <li><a href="works/index.html">Design</a></li>
+                        <li><a href="works/work1.html">Photo</a></li>
+                    </ul>
+                </li>
+                <li><a href="about/index.html">About</a></li>
+                <li><a href="contact/index.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="sp-btn"><span></span><span>Menu</span><span></span></div>
+        <nav class="sp-nav">
+            <ul>
+                <li>
+                    <button class="sp-accordion-trigger" aria-label="Worksメニュー"
+                        data-panel="accordion-panel_02">Works</button>
+                    <ul class="sp-works-menu">
+                        <li><a href="works/index.html">Design</a></li>
+                        <li><a href="works/work1.html">Photo</a></li>
+                    </ul>
+                </li>
+                <li><a href="about/index.html">About</a></li>
+                <li><a href="contact/index.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="container">
+        <div class="main">
+            <div class="sp-m-logo"><a href="index.html"><img src="img/logo.webp" alt="スマホロゴ"></a></div>
+            <picture>
+                <source srcset="img/top_sp.webp" media="(max-width: 940px)">
+                <source srcset="img/top.webp" media="(max-width: 1240px)">
+                <img src="img/pc_top.webp" alt="top">
+            </picture>
+        </div>
+
+        <footer>
+            <div class="footer-copy">
+                <small>© MATSUMOTO PORTFOLIO</small>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
